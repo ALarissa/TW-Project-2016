@@ -1,0 +1,51 @@
+<section class='main-wrapper homepage-main-wrapper'>
+
+	<section class='slider-wrapper'>
+		<ul class='homepage-slider'>
+			<li class='homepage-slider-slide slide-1 active-slide'>
+				<span class='vertical-align-helper'></span>
+				<img src='images/products/name34.png' alt='Slide 1 image' />
+			</li>
+			<li class='homepage-slider-slide slide-2'>
+				<span class='vertical-align-helper'></span>
+				<img src='images/products/name27.png' alt='Slide 2 image' />
+			</li>
+			<li class='homepage-slider-slide slide-3'>
+				<span class='vertical-align-helper'></span>
+				<img src='images/products/name43.png' alt='Slide 3 image' />
+			</li>
+		</ul>
+	</section>
+
+	<section class='info'>
+		<article>
+			<h3>Brownie jelly beans</h3>
+			Marshmallow muffin sweet cake apple pie. Sugar plum chocolate liquorice pudding pudding tootsie roll chocolate bar cake. Bear claw sweet jelly-o. Chocolate cake jelly-o pie chocolate cake oat cake gummies sweet roll jujubes candy canes. Marzipan halvah cotton candy cupcake cheesecake. Sweet candy canes apple pie chocolate bar candy croissant. Chocolate bar bonbon dessert.
+		</article>
+		<article>
+			<h3>Gummi bears ice cream</h3>
+			Dessert marzipan jelly beans lemon drops pastry topping candy gummi bears. Toffee croissant macaroon cheesecake cake gingerbread jujubes jelly beans. Chocolate sesame snaps sesame snaps tiramisu carrot cake oat cake apple pie muffin carrot cake. Macaroon apple pie caramels topping liquorice cotton candy. Topping pie icing cheesecake pudding.
+		</article>
+	</section>
+
+
+
+	<section class='cool-products'>
+		<h3 class='equal-header-margins-h3'>More cool products</h3>
+		<article ng-repeat='Product in HomepageProducts'>
+			<a href='/product/{{ Product.id_product }}'>
+				<div>
+					<span class='vertical-align-helper'></span>
+					<img src='{{ Product.image }}' alt='prod1'>
+				</div>
+				<div>
+					<h3>{{ Product.name }}</h3>
+					{{ Product.description }}
+				</div>
+			</a>
+		</article>
+	</section>
+	
+</section>
+
+<script src="js/resize.js"></script>

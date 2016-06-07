@@ -1,0 +1,123 @@
+<section class='main-wrapper statistics-general-wrapper'>
+	<h2>Price-Sold Distribution Chart</h2>
+	<div id='products-chart' style='width: 100%;height: 400px;'></div>
+	<h2>Star (rating) Distribution Chart</h2>
+	<div id='rating-chart' style='width: 100%;height: 400px;'></div>
+</section>
+
+<script src='js/resize.js'></script>
+<script type='text/javascript'>
+	$.ajax({
+		method: 'GET',
+		url: '/api/statistics',
+		success: function(data) {
+			console.log(data);
+			var products = [];
+			var rating = [];
+			data.products.forEach(function(product) {
+				var temp = {
+					"x": parseInt(product.totalSales),
+					"y": parseInt(product.price),
+					"z": product.name
+				}
+				products.push(temp);
+			});
+			rating[0] = {
+				"x": 1,
+				"y": data.stars[0].total1,
+				"z": '1-star votes'
+			};
+			rating[1] = {
+				"x": 2,
+				"y": data.stars[0].total2,
+				"z": '2-star votes'
+			};
+			rating[2] = {
+				"x": 3,
+				"y": data.stars[0].total3,
+				"z": '3-star votes'
+			};
+			rating[3] = {
+				"x": 4,
+				"y": data.stars[0].total4,
+				"z": '4-star votes'
+			};
+			rating[4] = {
+				"x": 5,
+				"y": data.stars[0].total5,
+				"z": '5-star votes'
+			};
+
+			console.log(products);
+			console.log(rating);
+
+			var chart = AmCharts.makeChart( "products-chart", {
+			  "type": "xy",
+			  "path": "http://www.amcharts.com/lib/3/",
+			  "theme": "light",
+			  "dataProvider": products,
+			  "valueAxes": [ {
+			    "position": "bottom",
+			    "axisAlpha": 0
+			  }, {
+			    "minMaxMultiplier": 1.2,
+			    "axisAlpha": 0,
+			    "position": "left"
+			  } ],
+			  "startDuration": 1.5,
+			  "graphs": [ {
+			    "balloonText": "<b>[[z]]</b><br>Sold: <b>[[x]]</b><br>Price: <b>[[y]]</b>",
+			    "bullet": "circle",
+			    "bulletBorderAlpha": 0.2,
+			    "bulletAlpha": 0.8,
+			    "lineAlpha": 0,
+			    "fillAlphas": 0,
+			    "xField": "x",
+			    "yField": "y",
+			    "zField": "z",
+			    "maxBulletSize": 20
+			  } ],
+			  "marginLeft": 46,
+			  "marginBottom": 35,
+			  "export": {
+			    "enabled": true
+			  }
+			} );
+
+			var chart2 = AmCharts.makeChart( "rating-chart", {
+			  "type": "xy",
+			  "path": "http://www.amcharts.com/lib/3/",
+			  "theme": "light",
+			  "dataProvider": rating,
+			  "valueAxes": [ {
+			    "position": "bottom",
+			    "axisAlpha": 0
+			  }, {
+			    "minMaxMultiplier": 1.2,
+			    "axisAlpha": 0,
+			    "position": "left"
+			  } ],
+			  "startDuration": 1.5,
+			  "graphs": [ {
+			    "balloonText": "<b>[[z]]</b><br><b>[[y]]</b>",
+			    "bullet": "circle",
+			    "bulletBorderAlpha": 0.2,
+			    "bulletAlpha": 0.8,
+			    "lineAlpha": 0,
+			    "fillAlphas": 0,
+			    "xField": "x",
+			    "yField": "y",
+			    "zField": "z",
+			    "maxBulletSize": 20
+			  } ],
+			  "marginLeft": 46,
+			  "marginBottom": 35,
+			  "export": {
+			    "enabled": true
+			  }
+			} );
+
+
+		}
+	})
+</script>

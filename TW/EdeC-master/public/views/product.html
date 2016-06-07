@@ -1,0 +1,83 @@
+<section class='main-wrapper product-main-wrapper'>
+	<section class='product'>
+		<div class ='product-left'>
+			<div class ='product-left-up'><img src='{{Product.image}}' alt='prod1'></div>
+			<div class='product-left-down'>
+				<span ng-repeat='i in [] | range:Product.positiveRating'>
+					<span><img src='images/full_star.png' alt='a'></span>
+				</span>
+				<span ng-repeat='i in [] | range:Product.negativeRating'>
+					<span><img src='images/empty_star.png' alt='a'></span>
+				</span>
+			</div>
+		</div> 
+		<div class = 'product-right'>
+			<div class = 'product-right-up'>
+				<h3>{{ Product.name }}</h3>
+				<p>{{ Product.description }}</p>	
+			</div>
+			<div class = 'product-right-down'>
+				<div class = 'product-right-down-right'>
+					<div class = 'product-price'><p>{{ Product.price }} RON</p></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class='add-comment'>
+
+		<div class='div-title-comm'>
+			<h3>Add Comment</h3>
+		</div>	
+
+		<div class='div-form-comm'>
+			<form class='add-comment-form' method='post' action='/api/product/1'>
+
+				<div class = 'div1'>
+					<label for='commentForm'>  
+						<textarea id='commentForm' name='commentForm' required></textarea>
+					</label>
+				</div>
+				
+				<div class = 'div2'>
+					<select id='ratingForm' name='ratingForm' required>
+						<option value='' selected hidden>Rating</option>
+						<option value="1">1</option>
+						<option value='2'>2</option>
+						<option value='3'>3</option>
+						<option value='4'>4</option>
+						<option value='5'>5</option>
+					</select>
+				</div>
+				
+				<input type='text' value="{{ Product.id_product }}" hidden name='productId' />
+				
+				<div class = 'div3'>
+					<button type='submit'>Add Comment</button>
+				</div>
+
+			</form>
+		</div>
+	</section> 
+
+	<section class= 'comment' ng-repeat='Comment in Comments'>
+		<div class= 'comm-left'>
+			<div class= 'comm-left-up'>
+				<div class= 'comm-left-up-name'><p>{{ Comment.username }}</p></div>
+				<div class= 'comm-left-up-date'><p>{{ Comment.postDate }}</p></div>
+			</div>
+			<div class= 'comm-left-down'>{{ Comment.comm }}</div>
+		</div>
+		<div class= 'comm-right'>
+			<span ng-repeat='i in [] | range:Comment.positiveRating'>
+				<span><img src='images/full_star.png' alt='a'></span>
+			</span>
+			<span ng-repeat='i in [] | range:Comment.negativeRating'>
+				<span><img src='images/empty_star.png' alt='a'></span>
+			</span>
+		</div>
+	</section>
+	<a href='/product/{{ Product.id_product }}/comments/1' class='show-comments'>Show all comments</a>
+</section>
+
+<script src="js/resize.js"></script>

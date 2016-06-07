@@ -1,0 +1,46 @@
+<section class='main-wrapper products-main-wrapper'>
+	<section class='products' ng-if="Products.length > 0">
+
+		<h1 class='title'>Products</h1>
+
+		<article ng-repeat="Product in Products" class="edec-product">
+			<a href='/product/{{ Product.id_product }}'>
+			<div class = 'product-left'>
+				<span class='vertical-align-helper'></span>
+				<img src='{{Product.image}}' alt='prod1'>
+			</div> 
+
+			<div class = 'product-right'>
+
+				<div class = 'product-right-up'>
+					<h4>{{Product.name}}</h4>
+					{{Product.description}}				
+				</div>
+				<div class = 'product-right-down'>
+					<div class = 'product-right-down-left'>
+						<span ng-repeat='i in [] | range:Product.positiveRating'>
+							<span><img src='images/full_star.png' alt='a'></span>
+						</span>
+						<span ng-repeat='i in [] | range:Product.negativeRating'>
+							<span><img src='images/empty_star.png' alt='a'></span>
+						</span>
+					</div>
+					<div class = 'product-right-down-right'><p>Add to cart</p></div>
+					<!-- <button type = "button" id='product-cart'>Add to cart</button> -->
+				</div>
+			</div>
+			</a>
+		</article>	
+	<div class="pagination-centered">
+		<a href="/products/{{ Pager }}" id="products-previous" ng-if="Pager != 0"> 
+			<img src='images/previous.png' alt='Previous'>
+		</a>
+		
+		<a href="/products/{{ PagerNext }}" id="products-next" ng-if="PagerNext <= 5">
+			<img  src='images/next.png' alt='Next'>
+		</a>
+	</div>
+	</section>
+</section>
+
+<script src="js/resize.js"></script>

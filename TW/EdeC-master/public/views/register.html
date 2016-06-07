@@ -1,0 +1,61 @@
+<section class='main-wrapper register-main-wrapper'>
+
+	<div class="error-message" ng-if='errorCode == 1'>
+		<ul>
+			<li>The username or email is already in use !</li>
+		</ul>
+	</div>
+	<div class="error-message" ng-if='errorCode == 2'>
+		<ul>
+			<li>The email is already in use !</li>
+		</ul>
+	</div>
+	<div class="validation-message" ng-if='errorCode == 0'>
+		<ul>
+			<li>You have successfully registered !</li>
+		</ul>
+	</div>
+
+	<section ng-if='errorCode != 0'>
+		<h2>User Registration - <span class='registration-mandatory'>Mandatory Information</span><span class='registration-optional'>Optional Information</span></h2>
+		
+		<form class='register-form' method='post' action='/api/register'>
+
+			<section class='registration-pane registration-mandatory registration-active'>
+				<label for='username'>Username: <span class='required-element'>*</span><input type='text' id='username' name='username' value='TestUser' /></label>
+				<label for='password'>Password: <span class='required-element'>*</span><input type='password' id='password' name='password' value='testpassword' /></label>
+				<label for='repeat-password'>Repeat password: <span class='required-element'>*</span><input type='password' id='repeat-password' name='repeat_password' value='testpassword' /></label>
+				<label for='security-question'>Security question: <span class='required-element'>*</span>
+					<select id='security-question' name='security_question'>
+						<option value='' hidden></option>
+						<option value="What is your mother's maiden name ?" selected>What is your mother's maiden name ?</option>
+						<option value='What was the name of your first pet ?'>What was the name of your first pet ?</option>
+						<option value='Where did you spend your first vacation ?'>Where did you spend your first vacation ?</option>
+					</select>
+				</label>
+				<label for='security-answer'>Security answer: <span class='required-element'>*</span><input type='text' id='security-answer' name='security_answer' value='Ivan'/></label>
+				<label for='mail'>Email address: <span class='required-element'>*</span><input type='email' id='mail' name='mail' value='dragos.ivan94@gmail.com' /></label>
+				<span class='registration-button go-to-optional-registration'>Next</span>
+				<p><span class='required-element'>*</span> = required field</p>
+			</section>
+			<section class='registration-pane registration-optional'>
+				<label for='first-name'>First Name: <input type='text' id='first-name' name='first_name' /></label>
+				<label for='last-name'>Last Name: <input type='text' id='last-name' name='last_name' /></label>
+				<label for='gender'>Gender:
+					<select id='gender' name='gender'>
+						<option value='' hidden selected></option>
+						<option value='male'>Male</option>
+						<option value='female'>Female</option>
+					</select>
+				</label>
+				<label for='birthday'>Birthday: <input type='text' id='birthday' name='birthday' /></label>
+				<label for='adresss'>Address: <textarea id='address' name='address'></textarea></label>
+				<span class='registration-button go-to-mandatory-registration'>Back</span>
+				<span class='registration-button submit-registration'>Register</span>
+			</section>
+		</form>
+	</section>
+
+</section>
+
+<script src="js/resize.js"></script>

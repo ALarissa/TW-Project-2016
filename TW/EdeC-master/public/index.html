@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html ng-app="EDeC">
+	<head>
+		<base href="/">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>EDeC - Ethic Decisions for Consummers</title>
+		<link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
+		<link href="css/smoothness/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" type='text/css'>
+		<link href="libs/jquery.bxslider/jquery.bxslider.css" rel="stylesheet">
+		<link href="css/styles.css" rel="stylesheet" type='text/css'>
+
+		<script src="libs/jquery/jquery-2.1.1.js" type='text/javascript'></script>
+		<script src="libs/jqueryui/jquery-ui-1.9.2.custom.min.js" type='text/javascript'></script>
+		<script src="http://www.amcharts.com/lib/3/amcharts.js"></script>
+		<script src="http://www.amcharts.com/lib/3/xy.js"></script>
+		<script src="http://www.amcharts.com/lib/3/themes/light.js"></script>
+		<script src="libs/jquery.bxslider/jquery.bxslider.min.js" type='text/javascript'></script>
+	</head>
+
+	<body>
+		<header>
+			<section class='header'>
+				<a href='/homepage' class='edec-logo'>EDEC</a>
+				<div class='header-right'>
+					<span ng-if='!username'>
+						<a href='/login' class='hover-link'>Login</a>
+						<a href='/register' class='hover-link'>Register</a>
+						<a href='/products/1' class='hover-link'>Products</a>
+						<a href='/statistics' class='hover-link'>Global Statistics</a>
+						<a href='/statistics/1' class='hover-link'>Product Statistics</a>
+					</span>
+					<span ng-if='username'>
+						<a href='/profile' class='hover-link'>Profile</a>
+						<a href='' id='logout' class='hover-link'>Logout</a>
+						<a href='/products/1' class='hover-link'>Products</a>
+						<a href='/statistics' class='hover-link'>Global Statistics</a>
+						<a href='/statistics/1' class='hover-link'>Product Statistics</a>
+					</span>
+					<span class='separator'></span>
+					<a href='/cart' class='cart-link'>
+						<img src='images/cart.png' alt='EDeC Cart'>
+						<span id='cart-products'>
+					</a>
+				</div>
+			<section>
+
+			<form id='logout-form' action='/api/logout' method='GET' hidden></form>
+		</header>
+
+		<div ng-view></div>
+
+		<footer>
+			<section class='footer-pull-right'>
+				<a href='/about'>About us</a>
+				<a href='/faqs'>FAQs</a>
+				<a href='/privacy'>Privacy Policy</a>
+				<a href='/terms'>Terms and Conditions</a>
+			</section>	
+		</footer>
+		
+		<!-- AngularJS Javascript Includes  -->
+		<script src="libs/angular/angular.js"></script>
+		<script src="libs/angular/angular-strap.js"></script>
+		<script src="libs/angular/angular-strap.tpl.js"></script>
+		<script src="libs/angular/angular-messages.js"></script>
+		<script src="libs/angular/angular-resource.js"></script>
+		<script src="libs/angular/angular-route.js"></script>
+		<script src="libs/angular/angular-cookies.js"></script>
+		<!-- AngularJS END -->
+
+		<script src="js/app.js"></script>
+
+		<!-- Controllers include section -->
+		<script src="js/controllers/controllers.js"></script>
+		<!-- Controllers END -->
+
+		<!-- Services include section -->
+		<script src="js/services/services.js"></script>
+		<!-- Services END -->
+
+	</body>
+
+	<script src="js/main.js"></script>
+</html>

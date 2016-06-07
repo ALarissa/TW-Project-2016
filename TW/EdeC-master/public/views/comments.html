@@ -1,0 +1,53 @@
+<section class='main-wrapper product-main-wrapper comments-main-wrapper'>
+	<section class='product'>
+		<div class ='product-left'>
+			<div class ='product-left-up'><img src='{{Product.image}}' alt='prod1'></div>
+			<div class='product-left-down'>
+				<span ng-repeat='i in [] | range:Product.positiveRating'>
+					<span><img src='images/full_star.png' alt='a'></span>
+				</span>
+				<span ng-repeat='i in [] | range:Product.negativeRating'>
+					<span><img src='images/empty_star.png' alt='a'></span>
+				</span>
+			</div>
+		</div> 
+		<div class = 'product-right'>
+			<div class = 'product-right-up'>
+				<h3>{{Product.name}}</h3>
+				<p>{{Product.description}}</p>	
+			</div>
+			<div class = 'product-right-down'>
+				<div class = 'product-price'><p>{{Product.price}} RON</p></div>
+				<div class = 'product-cart'><p>Add to cart</p></div>
+			</div>
+		</div>
+	</section>
+	<section class= 'comment' ng-repeat='Comment in Comments'>
+		<div class= 'comm-left'>
+			<div class= 'comm-left-up'>
+				<div class= 'comm-left-up-name'><p>#{{ Comment.id_usercomm }} - {{ Comment.username }}</p></div>
+				<div class= 'comm-left-up-date'><p>{{ Comment.postDate }}</p></div>
+			</div>
+			<div class= 'comm-left-down'>{{ Comment.comm }}</div>
+		</div>
+		<div class= 'comm-right'>
+			<span ng-repeat='i in [] | range:Comment.positiveRating'>
+				<span><img src='images/full_star.png' alt='a'></span>
+			</span>
+			<span ng-repeat='i in [] | range:Comment.negativeRating'>
+				<span><img src='images/empty_star.png' alt='a'></span>
+			</span>
+		</div>
+	</section>
+	<div class="pagination-centered">
+		<a href="/product/{{ Product.id_product }}/comments/{{ Pager }}" id="comments-previous" ng-if="Pager != 0"> 
+			<img src='images/previous.png' alt='Previous'>
+		</a>
+		
+		<a href="/product/{{ Product.id_product }}/comments/{{ PagerNext }}" id="comments-next" ng-if="PagerNext != 0">
+			<img  src='images/next.png' alt='Next'>
+		</a>
+	</div>
+</section>
+
+<script src="js/resize.js"></script>

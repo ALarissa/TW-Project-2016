@@ -1,0 +1,23 @@
+<section class='main-wrapper statistics-main-wrapper'>
+
+<h1 class='title'>Statistics</h1>
+
+	<article class='statistic' ng-repeat='Statistic in Statistics'>
+		<a href='/statistic/{{ Statistic.id_product }}'>
+			<span class='pull-left'>{{ Statistic.name }}</span>
+			<span class='pull-right'>Total sales: {{ Statistic.totalSales }}</span>
+		</a>
+	</article>
+	<div class="pagination-centered">
+		<a href="/statistics/{{ Pager }}" id="products-previous" ng-if="Pager != 0"> 
+			<img src='images/previous.png' alt='Previous'>
+		</a>
+		
+		<a href="/statistics/{{ PagerNext }}" id="products-next" ng-if="PagerNext <= 5">
+			<img  src='images/next.png' alt='Next'>
+		</a>
+	</div>
+
+</section>
+
+<script src='js/resize.js'></script>
